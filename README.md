@@ -13,8 +13,7 @@
 git clone https://github.com/Andres-Carrero/project_grupo_alianza.git
 
 - Instalar Dependencias:
-composer install  
-npm install
+(composer install, npm install)
 
 - Configurar creedenciales de la base de datos en el archivo .env
 (DB_USERNAME=root, DB_PASSWORD=12345)
