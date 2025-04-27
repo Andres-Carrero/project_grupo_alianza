@@ -18,6 +18,7 @@
                             <th>Nombre</th>
                             <th>Descripción</th>
                             <th>Fecha de Creación</th>
+                            <th>Usuario</th>
                             <th>Acciones</th>
                         </tr>
                     </thead>
@@ -35,6 +36,7 @@
                                 <td class="cocktail-description" data-id="{{ $cocktail->id }}">{{ $cocktail->description }}
                                 </td>
                                 <td>{{ $cocktail->created_at->format('d/m/Y H:i') }}</td>
+                                <td>{{ $cocktail->user->name ?? 'Desconocido' }}</td>
                                 <td>
                                     <button class="btn btn-warning btn-sm edit-cocktail" data-id="{{ $cocktail->id }}">
                                         Editar
@@ -46,7 +48,7 @@
                             </tr>
                         @empty
                             <tr>
-                                <td colspan="6" class="text-center">No hay cócteles guardados aún.</td>
+                                <td colspan="7" class="text-center">No hay cócteles guardados aún.</td>
                             </tr>
                         @endforelse
                     </tbody>
@@ -57,18 +59,15 @@
 
     <script>
         $(document).ready(function() {
-
-            // Editar cóctel
             $('.edit-cocktail').on('click', function() {
                 const button = $(this);
                 const cocktailId = button.data('id');
                 const name = button.closest('tr').find('.cocktail-name').text();
                 const description = button.closest('tr').find('.cocktail-description').text();
 
-                // Crear un formulario de edición en la misma fila
                 const editForm = `
                     <tr id="edit-row-${cocktailId}">
-                        <td colspan="6">
+                        <td colspan="7">
                             <form id="edit-cocktail-form-${cocktailId}">
                                 <div class="mb-2">
                                     <input type="text" class="form-control" name="name" value="${name}">
@@ -85,19 +84,16 @@
                     </tr>
                 `;
 
-                // Insertar el formulario justo debajo de la fila original
                 $(`#cocktail-row-${cocktailId}`).after(editForm);
-                button.prop('disabled', true); // Deshabilitar el botón de editar
+                button.prop('disabled', true);
             });
 
-            // Cancelar la edición
             $(document).on('click', '.cancel-edit', function() {
                 const cocktailId = $(this).closest('tr').prev().find('.edit-cocktail').data('id');
-                $(`#edit-row-${cocktailId}`).remove(); // Eliminar el formulario de edición
-                $(`#cocktail-row-${cocktailId}`).find('.edit-cocktail').prop('disabled', false); // Habilitar el botón de editar
+                $(`#edit-row-${cocktailId}`).remove();
+                $(`#cocktail-row-${cocktailId}`).find('.edit-cocktail').prop('disabled', false);
             });
 
-            // Guardar cambios de edición
             $(document).on('submit', 'form[id^="edit-cocktail-form-"]', function(event) {
                 event.preventDefault();
 
@@ -114,14 +110,11 @@
                         _token: '{{ csrf_token() }}'
                     },
                     success: function(response) {
-                        // Actualizar la fila con los nuevos valores
                         $(`#cocktail-row-${cocktailId}`).find('.cocktail-name').text(name);
                         $(`#cocktail-row-${cocktailId}`).find('.cocktail-description').text(description);
 
-                        // Eliminar el formulario de edición
                         $(`#edit-row-${cocktailId}`).remove();
 
-                        // Mostrar alerta de éxito
                         alertToast({
                             text: response.msg,
                             icon: 'success'
@@ -136,7 +129,6 @@
                 });
             });
 
-            // Eliminar cóctel
             $('.delete-cocktail').on('click', function() {
                 const cocktailId = $(this).data('id');
 
@@ -151,15 +143,12 @@
                                 _token: '{{ csrf_token() }}'
                             },
                             success: function(response) {
-                                // Eliminar la fila de la tabla
                                 $(`#cocktail-row-${cocktailId}`).remove();
 
-                                // Comprobar si hay registros
                                 if ($('#cocktail-table-body').children().length === 0) {
-                                    $('#cocktail-table-body').html('<tr><td colspan="6" class="text-center">No hay cócteles guardados aún.</td></tr>');
+                                    $('#cocktail-table-body').html('<tr><td colspan="7" class="text-center">No hay cócteles guardados aún.</td></tr>');
                                 }
 
-                                // Mostrar alerta de éxito
                                 alertToast({
                                     text: response.msg,
                                     icon: 'success'

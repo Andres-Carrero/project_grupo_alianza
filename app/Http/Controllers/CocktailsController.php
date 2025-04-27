@@ -13,7 +13,7 @@ class CocktailsController extends Controller
 
     public function saved()
     {
-        $cocktails = Cocktails::all();
+        $cocktails = Cocktails::with('user')->get();
 
         return view('cocktails.saved', compact('cocktails'));
     }

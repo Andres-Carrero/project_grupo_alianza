@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('drink_id');
             $table->string('name');
-            $table->string('description');
+            $table->string('description', 1000);
             $table->string('image_url');
             $table->timestamps();
             $table->softDeletes();

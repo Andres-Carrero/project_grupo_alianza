@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -15,4 +14,9 @@ class Cocktails extends Model
     ];
 
     protected $dates = ['deleted_at']; 
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
 }
