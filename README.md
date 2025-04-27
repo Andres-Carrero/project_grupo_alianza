@@ -12,19 +12,18 @@
 
 git clone https://github.com/Andres-Carrero/project_grupo_alianza.git
 
-- Instalar Dependencias
+- Instalar Dependencias:
 composer install  
 npm install
 
 - Configurar creedenciales de la base de datos en el archivo .env
-DB_USERNAME=root    
-DB_PASSWORD=12345
+(DB_USERNAME=root, DB_PASSWORD=12345)
 
 - Ejecutar Migraciones
-php artisan migrate
+(php artisan migrate)
 
 - Ejecutar proyecto
-php artisan service
+(php artisan serve)
 
 - Acceder el proyecto
-http://localhost:8000
+(http://localhost:8000)
