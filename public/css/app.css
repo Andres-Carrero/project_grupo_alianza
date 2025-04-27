@@ -1,0 +1,16 @@
+.styleBody {
+    height: 92vh;
+}
+
+.background {
+    background-image: url('../resources/background-light.jpg');
+    background-repeat: initial;
+}
+
+.fs-10 {
+    font-size: 10px;
+}
+
+.hidden {
+    display: none;
+}
