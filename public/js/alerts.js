@@ -7,7 +7,7 @@ const defaultsToast = {
 };
 
 const defaultValues = {
-    background: "var(--ion-card-background, var(--ion-item-background, var(--ion-background-color, #fff)))",
+    // background: "var(--ion-card-background, var(--ion-item-background, var(--ion-background-color, #fff)))",
     customClass: {
         container: 'high-z-index'
     },
@@ -101,18 +101,18 @@ const defaultValues = {
             // ----- Confirm Button ----//
             showConfirmButton: params.showConfirmButton ?? true,
             confirmButtonText: params.confirmButtonText ?? "Si",
-            confirmButtonColor: params.confirmButtonColor ?? "var(--ion-color-success)",
+            confirmButtonColor: params.confirmButtonColor ?? "var(--bs-success)",
             confirmButtonAriaLabel: params.confirmButtonAriaLabel ?? null,
 
             // ----- Deny Button ----//
             showDenyButton: params.showDenyButton ?? false,
             denyButtonText: params.denyButtonText ?? "No",
-            denyButtonColor: params.denyButtonColor ?? "var(--ion-color-danger)",
+            denyButtonColor: params.denyButtonColor ?? "var(--bs-danger)",
             denyButtonAriaLabel: params.denyButtonAriaLabel ?? null,
 
             // ----- Cancel Button ----//
             showCancelButton: params.showCancelButton ?? true,
-            cancelButtonColor: params.cancelButtonColor ?? "var(--ion-color-danger)",
+            cancelButtonColor: params.cancelButtonColor ?? "var(--bs-danger)",
             cancelButtonText: params.cancelButtonText ?? "No",
             cancelButtonAriaLabel: params.cancelButtonAriaLabel ?? null,
 

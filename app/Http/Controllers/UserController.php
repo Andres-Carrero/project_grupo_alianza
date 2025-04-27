@@ -22,11 +22,6 @@ class UserController extends Controller
         return view('register');
     }
 
-    public function viewDashboard(Request $request)
-    {
-        return view('dashboard');
-    }
-
     public function login(Request $request)
     {
         try {

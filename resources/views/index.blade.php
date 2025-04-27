@@ -84,7 +84,7 @@
                             icon: 'success'
                         });
 
-                        window.location.href = '/dashboard';
+                        window.location.href = '/cocktails';
                     },
                     error: async function(xhr) {
                         if (xhr?.responseJSON?.message)

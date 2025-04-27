@@ -14,3 +14,55 @@
 .hidden {
     display: none;
 }
+
+.justify{
+    text-align: justify;
+    font-size: 12px;
+}
+
+.titleCards {
+    display: flex;
+    align-items: center;
+}
+
+.titleId {
+    font-size: 8px;
+}
+
+.w-25 {
+    width: 45px !important;
+}
+
+.pRelative {
+    position: relative;
+}
+
+.abs {
+    position: absolute;
+    bottom: 10px;
+    right: 15px;
+}
+
+/* Estilo para los botones de letras */
+.letter-btn {
+    font-size: 1.2rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    padding: 8px 12px;
+    border-radius: 30px;
+    transition: all 0.3s ease-in-out;
+}
+
+.letter-btn:hover {
+    background-color: #007bff;
+    color: white;
+}
+
+.letter-btn.active {
+    background-color: #0056b3;
+    color: white;
+}
+
+.letter-btn:focus {
+    box-shadow: none;
+}
